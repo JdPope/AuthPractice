@@ -4,6 +4,7 @@ class JsonWebToken
   def self.encode payload
     payload[:exp] = 24.hours.from_now.to_i
     JWT.encode(payload, SECRET)
+  
   end
 
 
