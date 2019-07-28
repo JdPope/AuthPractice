@@ -3,8 +3,7 @@ class JobsController < ApplicationController
 
   # GET /jobs
   def index
-    @jobs = Job.all
-
+    @jobs = Job.find_by(user_id: current_user[:id])
     render json: @jobs
   end
 
