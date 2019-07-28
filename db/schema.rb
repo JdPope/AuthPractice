@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_184236) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "name"
+    t.json "rre"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
