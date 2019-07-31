@@ -45,24 +45,23 @@ class JobsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def job_params
-      params.require(:job).permit(:name, :user_id, {
-        rre:[
-          roles:[
-            :role_id,
-            :role_name,
-            :resp_id,
-            responsibilities:[
-              :role_id,
-              :resp_id,
-              :resp_name,
-              expectations:[
-                :resp_id,
-                :exp_name,
-                :exp_id
-              ]
-            ]
-          ]
-        ]}
+      params.require(:job).permit(:name, :user_id, rre:{}
       )
     end
 end
+
+
+
+#rre: {"roles"=>[{"role_id"=>0, "role_name"=>"hole digger", "r
+#esponsibities"=>[{"resp_id"=>0, "role_id"=>0, "expectations"=>[{"resp_id"=>0, "exp_id"=>0}],
+# "resp_name"=>"WEKLJHeklj"}]}, {"role_id"=>1, "role_name"=>"TEST", "responsibities"=>[{"role
+#_id"=>1, "resp_id"=>1, "resp_name"=>"TST R", "expectations"=>[]}]}]}
+
+#rre: {"roles"=>[{"role_id"=>1, "role_percentage"=>"50%",
+#{}"role_name"=>"catch dogs", "responsibilities"=>[{"resp_id"=>1, "resp_name"=>"woof", "expecta
+#tions"=>[{"expectation_id"=>1, "expectation_name"=>"bark as much as possible"}, {"expectatio
+#n_id"=>2, "expectation_name"=>"have the loudest bark at the dog park"}]}]}, {"role_id"=>2, "
+#role_percentage"=>"50%", "role_name"=>"destroy yard", "responsibilities"=>[{"resp_id"=>2, "r
+#esp_name"=>"dig fuck ton\n of holes", "expectations"=>[{"expectation_id"=>1, "expectation_na
+#me"=>"dig at min 10 holes"}, {"expectation_id"=>2, "expectation_name"=>"diameter of 1ft"}]}]
+#}]}
