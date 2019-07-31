@@ -46,7 +46,7 @@ class JobsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def job_params
       params.require(:job).permit(:name, :user_id, rre:{}
-      )
+      ).merge(user_id: current_user.id)
     end
 end
 
